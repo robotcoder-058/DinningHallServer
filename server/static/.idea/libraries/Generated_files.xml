@@ -1,0 +1,17 @@
+<component name="libraryTable">
+  <library name="Generated files" type="javaScript">
+    <properties>
+      <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/flatify/client/scripts/Chart/ChartCtrl.js" />
+        <item url="file://$PROJECT_DIR$/flatify/client/scripts/Chart/ChartDirective.js" />
+        <item url="file://$PROJECT_DIR$/flatify/client/scripts/app.js" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/flatify/client/scripts/Chart/ChartCtrl.js" />
+      <root url="file://$PROJECT_DIR$/flatify/client/scripts/Chart/ChartDirective.js" />
+      <root url="file://$PROJECT_DIR$/flatify/client/scripts/app.js" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>

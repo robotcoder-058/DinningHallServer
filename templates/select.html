@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+
+    <title>jQuery Flot - Canvas Admin</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="">
+	<meta name="author" content="" />
+
+{#	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,800italic,400,600,800" type="text/css">#}
+	<link rel="stylesheet" href="/static/css/font-awesome.min.css" type="text/css" />
+	<link rel="stylesheet" href="/static/css/bootstrap.min.css" type="text/css" />
+	<link rel="stylesheet" href="/static/js/libs/css/ui-lightness/jquery-ui-1.9.2.custom.css" type="text/css" />
+
+	<link rel="stylesheet" href="/static/js/plugins/icheck/skins/minimal/blue.css" type="text/css" />
+	<link rel="stylesheet" href="/static/js/plugins/datepicker/datepicker.css" type="text/css" />
+	<link rel="stylesheet" href="/static/js/plugins/select2/select2.css" type="text/css" />
+	<link rel="stylesheet" href="/static/js/plugins/simplecolorpicker/jquery.simplecolorpicker.css" type="text/css" />
+	<link rel="stylesheet" href="/static/js/plugins/timepicker/bootstrap-timepicker.css" type="text/css" />
+	<link rel="stylesheet" href="/static/js/plugins/fileupload/bootstrap-fileupload.css" type="text/css" />
+
+
+	<link rel="stylesheet" href="/static/css/App.css" type="text/css" />
+
+	<link rel="stylesheet" href="/static/css/custom.css" type="text/css" />
+	
+</head>
+
+<body>
+
+<div id="wrapper">
+
+
+<header id="header">
+
+    <h1 id="site-logo">
+        <a href="/">
+            <img src="/static/img/logos/logo.png" alt="Site Logo" />
+        </a>
+    </h1>
+
+    <a href="javascript:;" data-toggle="collapse" data-target=".top-bar-collapse" id="top-bar-toggle" class="navbar-toggle collapsed">
+        <i class="fa fa-cog"></i>
+    </a>
+
+    <a href="javascript:;" data-toggle="collapse" data-target=".sidebar-collapse" id="sidebar-toggle" class="navbar-toggle collapsed">
+        <i class="fa fa-reorder"></i>
+    </a>
+
+</header> <!-- header -->
+
+
+<nav id="top-bar" class="collapse top-bar-collapse">
+
+    <ul class="nav navbar-nav pull-left">
+        <li class="">
+            <a href="/">
+                <i class="fa fa-home"></i>
+                主页
+            </a>
+        </li>
+    </ul>
+
+    <ul class="nav navbar-nav pull-right">
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:;">
+                <i class="fa fa-user"></i>
+                用户姓名
+                <span class="caret"></span>
+            </a>
+
+            <ul class="dropdown-menu" role="menu">
+                <li>
+                    <a href="./page-settings.html">
+                        <i class="fa fa-cogs"></i>
+                        &nbsp;&nbsp;设置
+                    </a>
+                </li>
+                <li class="divider"></li>
+                <li>
+                    <a href="./page-login.html">
+                        <i class="fa fa-sign-out"></i>
+                        &nbsp;&nbsp;登出
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+</nav> <!-- /#top-bar -->
+
+
+
+<div id="sidebar-wrapper" class="collapse sidebar-collapse">
+
+    <div id="search">
+        <form>
+            <input class="form-control input-sm" type="text" name="search" placeholder="Search..." />
+
+            <button type="submit" id="search-btn" class="btn"><i class="fa fa-search"></i></button>
+        </form>
+    </div> <!-- #search -->
+
+    <nav id="sidebar">
+
+        <ul id="main-nav" class="open-active">
+
+            <li class="negtive">
+                <a href="/day">
+                    <i class="fa fa-dashboard"></i>
+                    昨日
+                </a>
+            </li>
+            <li class="negtive">
+                <a href="index.html">
+                    <i class="fa fa-dashboard"></i>
+                    上星期
+                </a>
+            </li>
+            <li class="negtive">
+                <a href="/month">
+                    <i class="fa fa-dashboard"></i>
+                    上月
+                </a>
+            </li>
+            <li class="negtive">
+                <a href="/year">
+                    <i class="fa fa-dashboard"></i>
+                    上年
+                </a>
+            </li>
+            <li class="active">
+                <a href="/select">
+                    <i class="fa fa-dashboard"></i>
+                    自定义查询
+                </a>
+            </li>
+        </ul>
+
+    </nav> <!-- #sidebar -->
+
+</div> <!-- /#sidebar-wrapper -->
+
+
+
+<div id="content">
+
+<div id="content-header">
+    <h1>自定义查询</h1>
+</div> <!-- #content-header -->
+
+<div id="content-container">
+
+
+<div class="portlet">
+    <div class="portlet-header">
+        <h3>
+            <i class="fa fa-calendar"></i>
+            日期选择
+        </h3>
+    </div>
+    <div class="portlet-content">
+        <div class="row">
+
+
+            <div class="col-sm-6">
+                <h4>起始日期</h4>
+                <input class="form-control" type="text" placeholder="Start date" id="dpStart" data-date-format="yyyy-mm-dd" data-date-autoclose="true">
+
+            </div>
+
+            <div class="col-sm-6">
+                <h4>终止日期</h4>
+                <input class="form-control" type="text" placeholder="End date" id="dpEnd" data-date-format="yyyy-mm-dd" data-date-autoclose="true">
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
+
+<div class="portlet">
+
+    <div class="portlet-header">
+
+        <h3>
+            <i class="fa fa-clock-o"></i>
+            时间选择
+        </h3>
+
+    </div> <!-- /.portlet-header -->
+
+    <div class="portlet-content">
+
+        <div class="row">
+            <div class="col-sm-6">
+                <h4>起始时间</h4>
+                <div class="input-group bootstrap-timepicker">
+                    <input id="tp-start" type="text" class="form-control">
+                    <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <h4>终止时间</h4>
+                <div class="input-group bootstrap-timepicker">
+                    <input id="tp-end" type="text" class="form-control">
+                    <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
+                </div>
+            </div>
+
+        </div> <!-- /.row -->
+
+    </div> <!-- /.portlet-content -->
+
+</div> <!-- /.portlet -->
+
+
+<div class="portlet" id="objects">
+<div class="portlet-header">
+    <h3>
+        <i class="fa fa-check"></i>
+        选择食堂
+    </h3>
+</div>
+
+
+<div class="portlet-content">
+
+    <div class="row">
+        <div class="col-sm-2">
+            <h4>本部</h4>
+            <div class="form-group">
+                <label class="checkbox">
+                    <input type="checkbox" id="inlineCheckbox1" class="" value="option1" disabled />
+                    本1
+                </label>
+
+                <label class="checkbox">
+                    <input type="checkbox" id="inlineCheckbox2" class="" value="option2" disabled/>
+                    本2
+                </label>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="form-group">
+                <h4>独墅湖</h4>
+                <label class="checkbox">
+                    <input type="checkbox" id="inlineCheckbox3" class="" value="1000001" disabled/>
+                    一期一食堂
+                </label>
+                                <label class="checkbox">
+                    <input type="checkbox" id="inlineCheckbox3" class="" value="1000002" disabled/>
+                    一期二食堂
+                </label>
+                                <label class="checkbox">
+                    <input type="checkbox" id="inlineCheckbox3" class="" value="1000003" />
+                    一期三食堂
+                </label>
+                                <label class="checkbox">
+                    <input type="checkbox" id="inlineCheckbox3" class="" value="1000011" disabled/>
+                    二期五食堂
+                </label>
+                                <label class="checkbox">
+                    <input type="checkbox" id="inlineCheckbox3" class="" value="1000012" disabled/>
+                    二期六食堂
+                </label>
+                                <label class="checkbox">
+                    <input type="checkbox" id="inlineCheckbox3" class="" value="1000017" disabled/>
+                    二期七食堂
+                </label>
+                <label class="checkbox">
+                    <input type="checkbox" id="inlineCheckbox3" class="" value="1000018" disabled/>
+                    二期八食堂
+                </label>
+
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="form-group">
+                <h4>东区</h4>
+                <label class="checkbox">
+                    <input type="checkbox" id="inlineCheckbox3" class="" value="1000030" />
+                    东四
+                </label>
+
+                <label class="checkbox">
+                    <input type="checkbox" id="inlineCheckbox3" class="" value="1000031" disabled/>
+                    东五
+                </label>
+                <label class="checkbox">
+                    <input type="checkbox" id="inlineCheckbox3" class="" value="1000032" disabled/>
+                    东七
+                </label>
+                <label class="checkbox">
+                    <input type="checkbox" id="inlineCheckbox3" class="" value="1000033" disabled/>
+                    东八
+                </label>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="form-group">
+                <h4>北区</h4>
+                <label class="checkbox">
+                    <input type="checkbox" id="inlineCheckbox3" class="" value="1000037" disabled/>
+                    北区六食堂
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<div class="portlet" id="options">
+    <div class="portlet-header">
+    <h3>
+        <i class="fa fa-check"></i>
+        选择查询内容
+    </h3>
+    </div>
+    <div class="portlet-content">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" id="inlineCheckbox3" class="" value="sum" />
+                        总计交易总金额
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" id="inlineCheckbox3" class="" value="timessum" />
+                        总计交易总次数
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" id="inlineCheckbox3" class="" value="trainmean" />
+                        总计每笔平均
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" id="inlineCheckbox3" class="" value="allsumchange" />
+                        总计金额变化
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" id="inlineCheckbox3" class="" value="alltimeschange" />
+                        总计次数变化
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" id="inlineCheckbox3" class="" value="allmeanchange" />
+                        总计平均变化
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" id="inlineCheckbox3" class="" value="sumchange" />
+                        各食堂金额变化
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" id="inlineCheckbox3" class="" value="timeschange" />
+                        各食堂次数变化
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" id="inlineCheckbox3" class="" value="meanchange" />
+                        各食堂平均变化
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" id="inlineCheckbox3" class="" value="groupbysum" />
+                        各食堂交易额排名
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" id="inlineCheckbox3" class="" value="groupbytimes" />
+                        各食堂交易次数排名
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" id="inlineCheckbox3" class="" value="groupbymean" />
+                        各食堂交易平均额排名
+                    </label>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<p id="submit" style="text-align: center; margin-top: 15px;">
+    <a class="btn btn-lg btn-primary" role="button" id="submit-button" style="vertical-align: middle;">提交查询</a>
+</p>
+
+<div class="portlet" style="margin-top: 15px;" id="result-container">
+<div class="portlet-header">
+    <h3>
+        <i class="fa fa-check-empty"></i>
+        查询结果
+    </h3>
+</div>
+<div class="portlet-content">
+    <div class="row">
+
+        <div class="col-md-4 col-sm-6" id="sumarea">
+
+            <a href="javascript:;" class="dashboard-stat primary">
+                <div class="visual">
+                    <i class="fa fa-star"></i>
+                </div> <!-- /.visual -->
+
+                <div class="details">
+                    <span class="content">消费总计</span>
+                    <span class="value" id="sum">1,236</span>
+                </div> <!-- /.details -->
+
+                <i class="fa fa-play-circle more"></i>
+
+            </a> <!-- /.dashboard-stat -->
+
+        </div> <!-- /.col-md-3 -->
+
+        <div class="col-md-4 col-sm-6" id="timesarea">
+
+            <a href="javascript:;" class="dashboard-stat secondary">
+                <div class="visual">
+                    <i class="fa fa-shopping-cart"></i>
+                </div> <!-- /.visual -->
+
+                <div class="details">
+                    <span class="content">消费总次</span>
+                    <span class="value" id="times">256</span>
+                </div> <!-- /.details -->
+
+                <i class="fa fa-play-circle more"></i>
+
+            </a> <!-- /.dashboard-stat -->
+
+        </div> <!-- /.col-md-3 -->
+
+        <div class="col-md-4 col-sm-6" id="trainmeanarea">
+
+            <a href="javascript:;" class="dashboard-stat tertiary">
+                <div class="visual">
+                    <i class="fa fa-clock-o"></i>
+                </div> <!-- /.visual -->
+
+                <div class="details">
+                    <span class="content">平均单笔消费</span>
+                    <span class="value" id="trainmean">4:37</span>
+                </div> <!-- /.details -->
+
+                <i class="fa fa-play-circle more"></i>
+
+            </a> <!-- /.dashboard-stat -->
+
+        </div> <!-- /.col-md-3 -->
+
+    </div> <!-- /.row -->
+<div class="row" style="margin-top: 15px;" id="allsumchangearea">
+
+    <div class="col-md-12">
+
+        <div class="portlet portlet-plain">
+
+            <div class="portlet-header">
+
+                <h3>
+                    <i class="fa fa-bar-chart-o"></i>
+                    总计消费金额变化
+                </h3>
+
+            </div> <!-- /.portlet-header -->
+
+            <div class="portlet-content">
+
+                <div id="allsumchange" class="chart-holder"></div>
+
+            </div> <!-- /.portlet-content -->
+
+        </div> <!-- /.portlet -->
+
+    </div> <!-- /.col -->
+
+
+</div> <!-- /.row -->
+<div class="row" id="alltimeschangearea">
+
+    <div class="col-md-12">
+
+        <div class="portlet portlet-plain">
+
+            <div class="portlet-header">
+
+                <h3>
+                    <i class="fa fa-bar-chart-o"></i>
+                    总计消费次数变化
+                </h3>
+
+            </div> <!-- /.portlet-header -->
+
+            <div class="portlet-content">
+
+                <div id="alltimeschange" class="chart-holder"></div>
+
+            </div> <!-- /.portlet-content -->
+
+        </div> <!-- /.portlet -->
+
+    </div> <!-- /.col -->
+
+
+</div> <!-- /.row -->
+<div class="row" id="allmeanchangearea">
+
+    <div class="col-md-12">
+
+        <div class="portlet portlet-plain">
+
+            <div class="portlet-header">
+
+                <h3>
+                    <i class="fa fa-bar-chart-o"></i>
+                    总计每餐平均变化
+                </h3>
+
+            </div> <!-- /.portlet-header -->
+
+            <div class="portlet-content">
+
+                <div id="allmeanchange" class="chart-holder"></div>
+
+            </div> <!-- /.portlet-content -->
+
+        </div> <!-- /.portlet -->
+
+    </div> <!-- /.col -->
+
+
+</div> <!-- /.row -->
+<div class="row" id="sumchangearea">
+
+    <div class="col-md-12">
+
+        <div class="portlet portlet-plain">
+
+            <div class="portlet-header">
+
+                <h3>
+                    <i class="fa fa-bar-chart-o"></i>
+                    各食堂消费金额变化
+                </h3>
+
+            </div> <!-- /.portlet-header -->
+
+            <div class="portlet-content">
+
+                <div id="sumchange" class="chart-holder"></div>
+
+            </div> <!-- /.portlet-content -->
+
+        </div> <!-- /.portlet -->
+
+    </div> <!-- /.col -->
+
+
+</div> <!-- /.row -->
+<div class="row" id="timeschangearea">
+
+    <div class="col-md-12">
+
+        <div class="portlet portlet-plain">
+
+            <div class="portlet-header">
+
+                <h3>
+                    <i class="fa fa-bar-chart-o"></i>
+                    各食堂消费次数变化
+                </h3>
+
+            </div> <!-- /.portlet-header -->
+
+            <div class="portlet-content">
+
+                <div id="timeschange" class="chart-holder"></div>
+
+            </div> <!-- /.portlet-content -->
+
+        </div> <!-- /.portlet -->
+
+    </div> <!-- /.col -->
+
+
+</div> <!-- /.row -->
+<div class="row" id="meanchangearea">
+
+    <div class="col-md-12">
+
+        <div class="portlet portlet-plain">
+
+            <div class="portlet-header">
+
+                <h3>
+                    <i class="fa fa-bar-chart-o"></i>
+                    各食堂消费平均变化
+                </h3>
+
+            </div> <!-- /.portlet-header -->
+
+            <div class="portlet-content">
+
+                <div id="meanchange" class="chart-holder"></div>
+
+            </div> <!-- /.portlet-content -->
+
+        </div> <!-- /.portlet -->
+
+    </div> <!-- /.col -->
+
+
+</div> <!-- /.row -->
+
+<div class="row" id="groupbysumarea">
+
+    <div class="col-md-12">
+
+        <div class="portlet portlet-plain">
+
+            <div class="portlet-header">
+
+                <h3>
+                    <i class="fa fa-bar-chart-o"></i>
+                    各食堂就餐金额总计
+                </h3>
+
+            </div> <!-- /.portlet-header -->
+
+            <div class="portlet-content">
+
+                <div id="groupbysum" class="chart-holder"></div>
+
+            </div> <!-- /.portlet-content -->
+
+        </div> <!-- /.portlet -->
+
+    </div> <!-- /.col -->
+</div>
+<div class="row" id="groupbytimesarea">
+
+    <div class="col-md-12">
+
+        <div class="portlet portlet-plain">
+
+            <div class="portlet-header">
+
+                <h3>
+                    <i class="fa fa-bar-chart-o"></i>
+                    各食堂就餐次数总计
+                </h3>
+
+            </div> <!-- /.portlet-header -->
+
+            <div class="portlet-content">
+
+                <div id="groupbytimes" class="chart-holder"></div>
+
+            </div> <!-- /.portlet-content -->
+
+        </div> <!-- /.portlet -->
+
+    </div> <!-- /.col -->
+</div>
+
+<div class="row" id="groupbymeanarea">
+
+    <div class="col-md-12">
+
+        <div class="portlet portlet-plain">
+
+            <div class="portlet-header">
+
+                <h3>
+                    <i class="fa fa-bar-chart-o"></i>
+                    各食堂每餐平均
+                </h3>
+
+            </div> <!-- /.portlet-header -->
+
+            <div class="portlet-content">
+
+                <div id="groupbymean" class="chart-holder"></div>
+
+            </div> <!-- /.portlet-content -->
+
+        </div> <!-- /.portlet -->
+
+    </div> <!-- /.col -->
+</div>
+
+
+
+</div>
+</div>
+
+
+</div>
+
+
+
+
+
+</div> <!-- /#content-container -->
+
+
+</div> <!-- #content -->
+
+</div>
+</div> <!-- #wrapper -->
+
+<footer id="footer">
+    <ul class="nav pull-right">
+        <li>
+            苏州大学后勤管理
+        </li>
+    </ul>
+</footer>
+
+<script src="/static/js/libs/jquery-1.9.1.min.js"></script>
+<script src="/static/js/libs/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="/static/js/libs/bootstrap.min.js"></script>
+
+<script src="/static/js/plugins/flot/jquery.flot.js"></script>
+<script src="/static/js/plugins/flot/jquery.flot.orderBars.js"></script>
+<script src="/static/js/plugins/flot/jquery.flot.pie.js"></script>
+<script src="/static/js/plugins/flot/jquery.flot.stack.js"></script>
+<script src="/static/js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+<script src="/static/js/plugins/flot/jquery.flot.resize.js"></script>
+<script src="/static/js/jquery.json.js"></script>
+
+<script src="/static/js/libs/raphael-2.1.2.min.js"></script>
+<script src="/static/js/plugins/morris/morris.min.js"></script>
+{#<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>#}
+{#<script src="http://cdn.oesmith.co.uk/morris-0.4.3.min.js"></script>#}
+
+<script src="/static/js/demos/charts/flot/area.js"></script>
+<script src="/static/js/demos/charts/flot/stacked-area.js"></script>
+<script src="/static/js/demos/charts/flot/vertical.js"></script>
+<script src="/static/js/demos/charts/flot/horizontal.js"></script>
+<script src="/static/js/demos/charts/flot/stacked-vertical.js"></script>
+<script src="/static/js/demos/charts/flot/stacked-horizontal.js"></script>
+<script src="/static/js/demos/charts/flot/pie.js"></script>
+<script src="/static/js/demos/charts/flot/donut.js"></script>
+<script src="/static/js/demos/charts/flot/scatter.js"></script>
+
+<script src="/static/js/plugins/icheck/jquery.icheck.js"></script>
+<script src="/static/js/plugins/datepicker/bootstrap-datepicker.js"></script>
+<script src="/static/js/plugins/timepicker/bootstrap-timepicker.js"></script>
+<script src="/static/js/plugins/simplecolorpicker/jquery.simplecolorpicker.js"></script>
+<script src="/static/js/plugins/select2/select2.js"></script>
+<script src="/static/js/plugins/autosize/jquery.autosize.min.js"></script>
+<script src="/static/js/plugins/textarea-counter/jquery.textarea-counter.js"></script>
+<script src="/static/js/plugins/fileupload/bootstrap-fileupload.js"></script>
+
+<script src="/static/js/App.js"></script>
+
+<script src="/static/js/select.js"></script>
+
+</body>
+</html>
